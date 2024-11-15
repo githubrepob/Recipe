@@ -1,0 +1,69 @@
+/* General reset for the card container */
+.meals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Spacing between cards */
+    margin: 20px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .mealCard {
+    background-color: #f9f9f9; /* Light background color for the cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .mealCard:hover {
+    transform: translateY(-10px); /* Slight hover effect to raise the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+  }
+  
+  .mealImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .mealTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .mealCalories {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .recipeButton {
+    padding: 10px 15px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recipeButton:hover {
+    background-color: #e64a19;
+  }
+  
+  /* Responsive Design: For small screens, stack the cards */
+  @media (max-width: 768px) {
+    .meals {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .meals {
+      grid-template-columns: 1fr; /* 1 card per row on very small screens */
+    }
+  }
+  
