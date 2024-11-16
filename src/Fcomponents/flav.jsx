@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import Mealcards from "./Mealcards";
-const Byconti = () =>{
+// import Mealcards from "./Mealcards";
+import Flavcards from "./Flavcard";
+const Flav = () =>{
     const [data,setData] = useState()
     const [search, setSearch] = useState()
     const handleInput = (event) =>{
         setSearch(event.target.value)
     }
     const myFun = async() =>{
-        const get = await fetch(`https://cosylab.iiitd.edu.in/recipe-search/continents?searchText=${search}&pageSize=100`)
+        const get = await fetch(`https://cosylab.iiitd.edu.in/api/foodPairingAnalysis/${search}`)
         const jsonData = await get.json()
-        console.log(jsonData.payload.data);
-        setData(jsonData.payload.data)
+        console.log(jsonData.similar_entities);
+        setData(jsonData.similar_entities)
     }
     console.log(data)
     return (
@@ -21,11 +22,11 @@ const Byconti = () =>{
                     <button onClick={myFun}>Search</button>
                 </div>
                 <div>
-                    <Mealcards detail = {data}/>
+                    <Flavcards detail = {data}/>
                 </div>
             </div>   
         
         </>
     )
 }
-export default Byconti
+export default Flav;

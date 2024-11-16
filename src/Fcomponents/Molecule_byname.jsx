@@ -1,31 +1,31 @@
 import React, { useState } from "react";
-import Mealcards from "./Mealcards";
-const Byconti = () =>{
+import Flavcard from './Flavcard'
+const Molecule = () =>{
     const [data,setData] = useState()
     const [search, setSearch] = useState()
     const handleInput = (event) =>{
         setSearch(event.target.value)
     }
     const myFun = async() =>{
-        const get = await fetch(`https://cosylab.iiitd.edu.in/recipe-search/continents?searchText=${search}&pageSize=100`)
+        const get = await fetch(`https://cosylab.iiitd.edu.in/api/molecule/getmoleculebyname/${search}`)
         const jsonData = await get.json()
-        console.log(jsonData.payload.data);
-        setData(jsonData.payload.data)
+        console.log(jsonData);
+        setData(jsonData)
     }
     console.log(data)
     return (
         <>
             <div>
                 <div className="searchBar">
-                    <input type = "text" placeholder="What's on your Mind ?" onChange={handleInput}/>
+                    <input type = "text" placeholder="Enter Name of the Molecule" onChange={handleInput}/>
                     <button onClick={myFun}>Search</button>
                 </div>
                 <div>
-                    <Mealcards detail = {data}/>
+                    <Flavcard detail = {data}/>
                 </div>
             </div>   
         
         </>
     )
 }
-export default Byconti
+export default Molecule
